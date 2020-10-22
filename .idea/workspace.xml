@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="271c0040-2c3e-431b-aac4-b8fc9f4a3b2b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1iGzGbnS4tBinZZzqxM1v4aQZnr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager" selected="Flutter.Flutter">
+    <configuration name="Flutter" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/shopping/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="node.js" type="NodeJSConfigurationType" path-to-js-file="server/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Flutter.Flutter" />
+      <item itemvalue="Node.js.node.js" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="271c0040-2c3e-431b-aac4-b8fc9f4a3b2b" name="Default Changelist" comment="" />
+      <created>1601548622177</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601548622177</updated>
+      <workItem from="1601548623216" duration="292000" />
+      <workItem from="1601549482175" duration="1664000" />
+      <workItem from="1601551375724" duration="631000" />
+      <workItem from="1601552145712" duration="1087000" />
+      <workItem from="1602393650126" duration="829000" />
+      <workItem from="1603358862787" duration="2069000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="123" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601549622550">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="184" y="123" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1601549622550" />
+    <state x="457" y="270" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1601548698262">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="457" y="270" key="#com.intellij.ide.util.TreeFileChooserDialog/0.23.1440.877@0.23.1440.877" timestamp="1601548698262" />
+    <state width="1078" height="122" key="GridCell.Tab.0.bottom" timestamp="1603361043055">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603361043055" />
+    <state width="1078" height="122" key="GridCell.Tab.0.center" timestamp="1603361043055">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1603361043055" />
+    <state width="1078" height="122" key="GridCell.Tab.0.left" timestamp="1603361043055">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1603361043055" />
+    <state width="1078" height="122" key="GridCell.Tab.0.right" timestamp="1603361043055">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1603361043055" />
+    <state width="1078" height="122" key="GridCell.Tab.1.bottom" timestamp="1603361043054">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603361043054" />
+    <state width="1078" height="122" key="GridCell.Tab.1.center" timestamp="1603361043054">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1603361043054" />
+    <state width="1078" height="122" key="GridCell.Tab.1.left" timestamp="1603361043053">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1603361043053" />
+    <state width="1078" height="122" key="GridCell.Tab.1.right" timestamp="1603361043054">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1078" height="122" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1603361043054" />
+    <state width="1398" height="122" key="GridCell.Tab.2.bottom" timestamp="1603358957565">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603358957565" />
+    <state width="1398" height="122" key="GridCell.Tab.2.center" timestamp="1603358957564">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1603358957564" />
+    <state width="1398" height="122" key="GridCell.Tab.2.left" timestamp="1603358957564">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1603358957564" />
+    <state width="1398" height="122" key="GridCell.Tab.2.right" timestamp="1603358957565">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1603358957565" />
+    <state width="1398" height="122" key="GridCell.Tab.3.bottom" timestamp="1603358957566">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.3.bottom/0.23.1440.877@0.23.1440.877" timestamp="1603358957566" />
+    <state width="1398" height="122" key="GridCell.Tab.3.center" timestamp="1603358957566">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.3.center/0.23.1440.877@0.23.1440.877" timestamp="1603358957566" />
+    <state width="1398" height="122" key="GridCell.Tab.3.left" timestamp="1603358957565">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.3.left/0.23.1440.877@0.23.1440.877" timestamp="1603358957565" />
+    <state width="1398" height="122" key="GridCell.Tab.3.right" timestamp="1603358957566">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="122" key="GridCell.Tab.3.right/0.23.1440.877@0.23.1440.877" timestamp="1603358957566" />
+    <state x="2" y="25" width="1429" height="873" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1601551741011">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="2" y="25" width="1429" height="873" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.877@0.23.1440.877" timestamp="1601551741011" />
+    <state x="113" y="197" width="920" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1601550513993">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="113" y="197" width="920" height="617" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1440.877@0.23.1440.877" timestamp="1601550513993" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="dart-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
+import 'package:shopping/common/constants.dart';
+import 'package:shopping/providers/auth_provider.dart';
+import 'package:shopping/screens/home/admin_home_screen.dart';
+import 'package:shopping/screens/home/user_home_screen.dart';
+import 'package:shopping/screens/login/login_screen.dart';
+import 'package:shopping/screens/user/user_details.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class myColors {
+class MyColors {
   static final Color primaryColor = Color(0xFF6d4c41);
   static final Color primaryColorLight = Color(0xFF6d4c41);
   static final Color primaryColorDark = Color(0xFF9c786c);
@@ -18,32 +25,51 @@ class myColors {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: myColors.primaryColor,
-        accentColor: myColors.accentColor,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: TextTheme(
-            headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            bodyText1: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
-            bodyText2: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
-        buttonTheme: ButtonThemeData(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-              // side: BorderSide(color: Theme.of(context).accentColor, width: 5),
-            ),
-            buttonColor: Theme.of(context).accentColor
-            // textTheme: ButtonTextTheme.primary
-            ),
-        backgroundColor: Colors.grey.shade50,
-        cursorColor: Colors.redAccent,
-        colorScheme: ColorScheme.light(),
-        errorColor: Colors.red,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider(), lazy: false,),
+        // ChangeNotifierProvider(create: (ctx) => UserProvider(), lazy: false),
+        // Provider(create: (context) => DatabaseProvider(), lazy: false),
+        // ChangeNotifierProxyProvider2<AuthProvider, DatabaseProvider, ProductProvider>(
+        //   create: (context) => ProductProvider(),
+        //   lazy: false,
+        //   update: (context, authProvider ,databaseProvider, productProvider) => productProvider..update(authProvider,databaseProvider),
+        // ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          primaryColor: MyColors.primaryColor,
+          accentColor: MyColors.accentColor,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: TextTheme(
+              headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              bodyText1: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+              bodyText2: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
+          buttonTheme: ButtonThemeData(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+                // side: BorderSide(color: Theme.of(context).accentColor, width: 5),
+              ),
+              buttonColor: Theme.of(context).accentColor
+              // textTheme: ButtonTextTheme.primary
+              ),
+          backgroundColor: Colors.grey.shade50,
+          cursorColor: Colors.redAccent,
+          colorScheme: ColorScheme.light(),
+          errorColor: Colors.red,
+        ),
+        routes: {
+          LoginScreen.routeName: (BuildContext context) => LoginScreen(),
+          UserDetails.routeName: (BuildContext context) => UserDetails(),
+          UserHomeScreen.routeName: (BuildContext context) => UserHomeScreen(),
+          AdminHomeScreen.routeName: (BuildContext context) => AdminHomeScreen(),
+          // ProductListScreen.routeName: (BuildContext context) => ProductListScreen(),
+          // ProductDetailsScreen.routeName: (BuildContext context) => ProductDetailsScreen(),
+        },
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -89,8 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Theme.of(context).accentColor,
               child: Text('Go To Server'),
               onPressed: () async {
-                http.Response response =
-                    await http.get('http://192.168.43.122:8080', headers: {"Content-Type": "application/json"});
+                http.Response response = await http.get(Constants.SERVER, headers: Constants.HEADER);
+                    // await http.get('http://192.168.43.122:8080', headers: {"Content-Type": "application/json"});
                 print(response);
               },
             )

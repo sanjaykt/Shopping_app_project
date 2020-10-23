@@ -4,8 +4,13 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/shopping/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/shopping/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/shopping/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/shopping/android/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/shopping/android/app/src/main/java" />
       <excludeFolder url="file://$MODULE_DIR$/shopping/build" />
+      <excludeFolder url="file://$MODULE_DIR$/shopping/ios/Flutter/App.framework" />
+      <excludeFolder url="file://$MODULE_DIR$/shopping/ios/Flutter/Flutter.framework" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

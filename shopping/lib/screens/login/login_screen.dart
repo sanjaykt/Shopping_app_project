@@ -46,7 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 30),
               FlatButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, UserHomeScreen.routeName);
+                    Navigator.popAndPushNamed(
+                        context, UserHomeScreen.routeName);
                   },
                   child: Text('Skip')),
               SizedBox(height: 30),

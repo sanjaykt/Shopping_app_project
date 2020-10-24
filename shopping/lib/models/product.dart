@@ -1,9 +1,11 @@
 import 'dart:io';
 
 class Product {
-  int productId;
+  int id;
   String productName;
   String productDetails;
+  String productBrand;
+  String productBarcode;
   String productImageUrl;
   File image;
   int createdByUserId;
@@ -17,9 +19,11 @@ class Product {
   clone() => Product.fromJson(toJson());
 
   Product.fromJson(Map<String, dynamic> json)
-      : productId = json['productId'],
+      : id = json['id'],
         productName = json['productName'],
         productDetails = json['productDetails'],
+        productBrand = json['productBrand'],
+        productBarcode = json['productBarcode'],
         productImageUrl = json['productImageUrl'],
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
@@ -32,9 +36,11 @@ class Product {
         statusId = json['statusId'];
 
   Map<String, dynamic> toJson() => {
-        'productId': productId,
+        'id': id,
         'productName': productName,
         'productDetails': productDetails,
+        'productBrand ': productBrand,
+        'productBarcode': productBarcode,
         'productImageUrl': productImageUrl,
         if (createdDate != null) 'createdDate': createdDate.toString(),
         if (modifiedDate != null) 'modifiedDate': modifiedDate.toString(),

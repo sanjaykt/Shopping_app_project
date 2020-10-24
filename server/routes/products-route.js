@@ -47,6 +47,8 @@ router.post('/product/create', (req, res) => {
     Product.create({
         productName: product.productName,
         productDetails: product.productDetails,
+        productBrand: product.productBrand,
+        productBarcode: product.productBarcode,
         createdByUserId: 1,
         modifiedByUserId: 1,
         statusId: 1
@@ -71,9 +73,11 @@ router.post('/product/create', (req, res) => {
 // edit product
 router.put('/product/edit', (req, res) => {
     const product = req.body;
-    Product.findByPk(product.productId).then((foundProduct) => {
+    Product.findByPk(product.id).then((foundProduct) => {
         foundProduct.productName = product.productName;
         foundProduct.productDetails = product.productDetails;
+        foundProduct.productBrand = product.productBrand;
+        foundProduct.productBarcode = product.productBarcode;
         foundProduct.createdByUserId = 1;
         foundProduct.modifiedByUserId = 1;
         foundProduct.statusId = 1

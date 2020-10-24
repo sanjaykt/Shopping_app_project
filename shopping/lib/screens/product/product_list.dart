@@ -60,11 +60,15 @@ class _ProductListScreenState extends State<ProductListScreen> {
                                       productToBeEdited: products[index],
                                     )));
                       },
-                      child: Card(
-                        child: ListTile(
-                          // leading: Image.network(products[index].productImageUrl),
-                          title: Text(products[index].productName),
-                          subtitle: Text(products[index].productDetails),
+                      child: SizedBox(
+                        height: 100,
+                        child: Card(
+                          child: ListTile(
+                            // leading: Image.network(products[index].productImageUrl), // for testing
+                            leading: _buildImageSizedBox(products, index),
+                            title: Text(products[index].productName),
+                            subtitle: Text(products[index].productDetails),
+                          ),
                         ),
                       ),
                     );
@@ -134,6 +138,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildImageSizedBox(List<Product> products, int index) {
+    return SizedBox(
+      height: 100,
+      width: 100,
+      child: products[index].image == null
+          ? RaisedButton(
+              child: Text('Upload Image'),
+              onPressed: () async {
+                PickedFile pickedFile =
+                    await picker.getImage(source: ImageSource.gallery);
+                products[index].image = File(pickedFile.path);
+                // products[index].productImageUrl = products[index].image.path;
+                _productProvider
+                    .tempUploadImage(products[index]); // for testing
+                // _productProvider.uploadImage(products[index].image);
+              },
+            )
+          : Image.file(products[index].image), // for testing
+      // : Image.file(products[index].image),
     );
   }
 }

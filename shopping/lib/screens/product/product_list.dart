@@ -142,6 +142,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   }
 
   Widget _buildImageSizedBox(List<Product> products, int index) {
+    String imagePath;
     return SizedBox(
       height: 100,
       width: 100,
@@ -149,13 +150,16 @@ class _ProductListScreenState extends State<ProductListScreen> {
           ? RaisedButton(
               child: Text('Upload Image'),
               onPressed: () async {
-                PickedFile pickedFile =
-                    await picker.getImage(source: ImageSource.gallery);
-                products[index].image = File(pickedFile.path);
+                PickedFile pickedFile = await picker.getImage(
+                    source: ImageSource.gallery, imageQuality: 10);
+                setState(() {
+                  products[index].image = File(pickedFile.path);
+                  imagePath = pickedFile.path;
+                });
                 // products[index].productImageUrl = products[index].image.path;
-                _productProvider
-                    .tempUploadImage(products[index]); // for testing
-                // _productProvider.uploadImage(products[index].image);
+                // _productProvider
+                //     .tempUploadImage(products[index]); // for testing
+                _productProvider.uploadImageMultiPart(products[index], imagePath);
               },
             )
           : Image.file(products[index].image), // for testing

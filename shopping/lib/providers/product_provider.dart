@@ -52,10 +52,12 @@ class ProductProvider extends ChangeNotifier {
     if (_productList != null && _productList.isNotEmpty) {
       serverResponse = ServerResponse(status: SUCCESS, data: _productList);
     } else if (serverResponse == null) {
-      serverResponse = ServerResponse(status: FAILED, message: 'Failed to get products!');
+      serverResponse =
+          ServerResponse(status: FAILED, message: 'Failed to get products!');
     }
     return serverResponse;
   }
+
   //
   // loadFromDB() async {
   //   try {
@@ -97,6 +99,7 @@ class ProductProvider extends ChangeNotifier {
       }
     }
   }
+
   //
   // addToDB(Product product) async {
   //   String productJson = json.encode(product.toJson());
@@ -104,7 +107,8 @@ class ProductProvider extends ChangeNotifier {
   // }
 
   Future<ServerResponse> createProduct(Product product) async {
-    ServerResponse serverResponse = await _productService.createProduct(product);
+    ServerResponse serverResponse =
+        await _productService.createProduct(product);
     if (serverResponse.status == SUCCESS) {
       addToCache(serverResponse.data);
       // addToDB(serverResponse.data);
@@ -124,16 +128,24 @@ class ProductProvider extends ChangeNotifier {
   }
 
   tempUploadImage(Product productEdit) {
-   for (var product in _productList) {
-     if (product.id == productEdit.id) {
-       product.image = productEdit.image;
-     }
-   }
+    for (var product in _productList) {
+      if (product.id == productEdit.id) {
+        product.image = productEdit.image;
+      }
+    }
     notifyListeners();
   }
 
-  uploadImage(File file) async {
-    ServerResponse serverResponse = await _productService.uploadImage(file);
+  uploadImage(Product product) async {
+    ServerResponse serverResponse = await _productService.uploadImage(product);
+    if (serverResponse.status == SUCCESS) {
+      serverResponse.message = 'uploaded successfully!';
+    }
+  }
+
+  uploadImageMultiPart(Product product, String imagePath) async {
+    ServerResponse serverResponse =
+        await _productService.uploadImageMultiPart(product, imagePath);
     if (serverResponse.status == SUCCESS) {
       serverResponse.message = 'uploaded successfully!';
     }

@@ -15,4 +15,6 @@ class Constants {
 
   static const String SERVER = 'http://192.168.43.122:8080';
   static const Map<String, String> HEADER = {"Content-Type": "application/json"};
+  static const Map<String, String>  HEADER_FORM_DATA = {"Content-Type": "image/png"};
+
 }

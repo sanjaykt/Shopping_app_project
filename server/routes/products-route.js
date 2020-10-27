@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const response = require('./../response');
 const Product = require('./../models/product');
-const multer = require('multer');
 
 
 // SET STORAGE
@@ -69,6 +68,12 @@ router.post('/product/create', (req, res) => {
         })
     })
 })
+// test
+// router.post('/product/upload_image', ((req, res) => {
+//         const test = req.body;
+//         res.send('reached!');
+//     }
+// ));
 
 // edit product
 router.put('/product/edit', (req, res) => {
@@ -106,32 +111,6 @@ router.put('/product/edit', (req, res) => {
     })
 })
 
-const imageFolderPath = './../images';
-// // const upload = multer({dest: imageFolderPath});
-const upload = multer({ dest: imageFolderPath });
-// upload image
-router.post('/product/upload_image' ,(req, res) => {
-    const file = req.body.image;
-    try {
-        upload.single(file);
-    } catch (err) {
-        console.log('upload failed...');
-    }
-    if (!file) {
-        response.response({
-            res: res,
-            data: null,
-            status: response.FAILED,
-            message: 'failed to upload image'
-        })
-    }
-    // response.response({
-    //     res: res,
-    //     data: file,
-    //     status: response.SUCCESS,
-    //     message: 'uploaded successfully'
-    // })
 
-})
 
 module.exports = router;

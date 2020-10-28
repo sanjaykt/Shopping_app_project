@@ -67,7 +67,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                         child: Card(
                           child: ListTile(
                             // leading: Image.network(products[index].productImageUrl), // for testing
-                            leading: _buildImageSizedBox(products, index),
+                            leading: _buildImageSizedBox(products[index]),
                             title: Text(products[index].productName),
                             subtitle: Text(products[index].productDetails),
                           ),
@@ -143,38 +143,34 @@ class _ProductListScreenState extends State<ProductListScreen> {
     );
   }
 
-  Widget _buildImageSizedBox(List<Product> products, int index) {
-    // String networkImageUrl = Constants.SERVER + products[index]?.imageUrl;
+  Widget _buildImageSizedBox(Product product) {
     String imagePath;
     return SizedBox(
       height: 100,
       width: 100,
-      child: products[index].imageUrl == null
+      child: product.imageUrl == null
           ? RaisedButton(
               child: Text('Upload Image'),
               onPressed: () async {
                 PickedFile pickedFile = await picker.getImage(
                     source: ImageSource.gallery, imageQuality: 10);
                 setState(() {
-                  products[index].image = File(pickedFile.path);
+                  product.image = File(pickedFile.path);
                   imagePath = pickedFile.path;
                   String fileName = imagePath.split('/').last;
-                  logger.i('filename: ', fileName);
-                  products[index].imageUrl = '/images/' + fileName;
-                  logger.i('imageUrl in cache: ', products[index].imageUrl);
+                  product.imageUrl = '/images/' + fileName;
                 });
                 // products[index].productImageUrl = products[index].image.path;
                 // _productProvider
                 //     .tempUploadImage(products[index]); // for testing
-                _productProvider.uploadImageMultiPart(
-                    products[index], imagePath);
+                _productProvider.uploadImageMultiPart(product, imagePath);
               },
             )
           :
           // Image.file(products[index].image), // for testing
           CachedNetworkImage(
               // imageUrl: "http://via.placeholder.com/350x150",
-              imageUrl: Constants.SERVER + products[index].imageUrl,
+              imageUrl: Constants.SERVER + product.imageUrl,
               placeholder: (context, url) =>
                   Center(child: CircularProgressIndicator()),
               // progressIndicatorBuilder: (context, url, downloadProgress) =>

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping/providers/auth_provider.dart';
+import 'package:shopping/screens/home/admin_home_screen.dart';
 import 'package:shopping/screens/login/login_screen.dart';
 import 'package:shopping/screens/product/product_list.dart';
 
@@ -31,14 +32,33 @@ class AppDrawer extends StatelessWidget {
               Navigator.popAndPushNamed(context, LoginScreen.routeName);
             },
           ),
-          ListTile(
+          if (_authProvider.loggedInUser.role == 'Admin')
+            ListTile(
             leading: Icon(Icons.storage),
             trailing: Icon(Icons.arrow_forward),
             title: Text('Products', style: TextStyle(fontSize: 16),),
             onTap: () {
               Navigator.popAndPushNamed(context, ProductListScreen.routeName);
             },
-          )
+          ),
+          if (_authProvider.loggedInUser.role == 'Admin')
+            ListTile(
+              leading: Icon(Icons.home),
+              trailing: Container(child: Icon(Icons.arrow_forward),),
+              title: Text('Home' ,style: TextStyle(fontSize: 16),),
+              onTap: () {
+                Navigator.popAndPushNamed(context, AdminHomeScreen.routeName);
+              },
+            ),
+          if (_authProvider.loggedInUser.role == 'Regular')
+            ListTile(
+              leading: Icon(Icons.home),
+              trailing: Container(child: Icon(Icons.arrow_forward),),
+              title: Text('Home' ,style: TextStyle(fontSize: 16),),
+              onTap: () {
+                Navigator.popAndPushNamed(context, AdminHomeScreen.routeName);
+              },
+            ),
         ],
       ),
     );

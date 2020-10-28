@@ -30,7 +30,7 @@ router.post('/upload_image', upload.single("image"), function (req, res) {
     src.on('end', function () {
         fs.unlinkSync(req.file.path);
         Product.findByPk(productId).then((foundProduct) => {
-            foundProduct.imageUrl ='/images/' + req.file.originalname.toString();
+            foundProduct.imageUrl = '/images/' + req.file.originalname.toString();
             logger.info('imageUrl: ', foundProduct.imageUrl);
             foundProduct.save().then(() => {
                 logger.info('saved url successfully')

@@ -1,4 +1,4 @@
-const app = require('express')();
+const express = require('express');
 const port = 8080;
 const bodyParser = require('body-parser');
 const userRouter = require('./routes/users-route');
@@ -6,6 +6,7 @@ const productRouter = require('./routes/products-route');
 const uploadRouter = require('./routes/upload_route');
 const sequelize = require('./util/database')
 
+const app = express();
 
 sequelize.sync().then(() => {
     console.log('sequelize is syncing');
@@ -14,6 +15,7 @@ sequelize.sync().then(() => {
 app.use(bodyParser.json());
 // app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '50mb', parameterLimit: 50000}));
+app.use(express.static('/Users/sanjay/Documents/Test-Code/Flutter-Test/Shopping_app_project/server/public'));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

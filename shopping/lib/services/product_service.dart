@@ -145,7 +145,7 @@ class ProductService {
       // var res = await request.send();
       // print(res);
       http.StreamedResponse response = await request.send();
-      logger.d(response.stream.bytesToString());
+      // logger.d(response.stream.bytesToString());
       serverResponse =
           ServerResponse(status: SUCCESS, message: '...', data: null);
       return serverResponse;

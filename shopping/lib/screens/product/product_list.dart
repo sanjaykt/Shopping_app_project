@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/common/constants.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/product_provider.dart';
 import 'package:shopping/screens/product/product_details_screen.dart';
@@ -142,11 +144,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
   }
 
   Widget _buildImageSizedBox(List<Product> products, int index) {
+    // String networkImageUrl = Constants.SERVER + products[index]?.imageUrl;
     String imagePath;
     return SizedBox(
       height: 100,
       width: 100,
-      child: products[index].image == null
+      child: products[index].imageUrl == null
           ? RaisedButton(
               child: Text('Upload Image'),
               onPressed: () async {
@@ -155,14 +158,29 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 setState(() {
                   products[index].image = File(pickedFile.path);
                   imagePath = pickedFile.path;
+                  String fileName = imagePath.split('/').last;
+                  logger.i('filename: ', fileName);
+                  products[index].imageUrl = '/images/' + fileName;
+                  logger.i('imageUrl in cache: ', products[index].imageUrl);
                 });
                 // products[index].productImageUrl = products[index].image.path;
                 // _productProvider
                 //     .tempUploadImage(products[index]); // for testing
-                _productProvider.uploadImageMultiPart(products[index], imagePath);
+                _productProvider.uploadImageMultiPart(
+                    products[index], imagePath);
               },
             )
-          : Image.file(products[index].image), // for testing
+          :
+          // Image.file(products[index].image), // for testing
+          CachedNetworkImage(
+              // imageUrl: "http://via.placeholder.com/350x150",
+              imageUrl: Constants.SERVER + products[index].imageUrl,
+              placeholder: (context, url) =>
+                  Center(child: CircularProgressIndicator()),
+              // progressIndicatorBuilder: (context, url, downloadProgress) =>
+              //     Center(child: CircularProgressIndicator(value: downloadProgress.progress,)),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
       // : Image.file(products[index].image),
     );
   }

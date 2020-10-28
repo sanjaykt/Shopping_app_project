@@ -18,24 +18,22 @@ const logger = require('logger').createLogger(); // logs to STDOUT
 // const upload = multer({dest: 'server/images/', fileFilter: fileFilter});
 
 
-const upload = multer({dest: 'server/images/'});
+const upload = multer({dest: 'server/public/images/'});
 
 
 router.post('/upload_image', upload.single("image"), function (req, res) {
     logger.info('Received file', req.file.originalname);
     const productId = req.body.productId;
     const src = fs.createReadStream(req.file.path);
-    const dest = fs.createWriteStream('server/images/' + req.file.originalname);
+    const dest = fs.createWriteStream('server/public/images/' + req.file.originalname);
     src.pipe(dest);
     src.on('end', function () {
         fs.unlinkSync(req.file.path);
         Product.findByPk(productId).then((foundProduct) => {
-            foundProduct.imageUrl = `server/images/${req.file.originalname.toString()}`;
+            foundProduct.imageUrl ='/images/' + req.file.originalname.toString();
             logger.info('imageUrl: ', foundProduct.imageUrl);
-            logger.info('foundProduct before saving:', foundProduct);
             foundProduct.save().then(() => {
                 logger.info('saved url successfully')
-                logger.info('foundProduct after saving:', foundProduct)
             }).catch((error) => {
                 logger.error('failed to save the url', error.toString());
             })

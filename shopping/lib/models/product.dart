@@ -6,7 +6,7 @@ class Product {
   String productDetails;
   String productBrand;
   String productBarcode;
-  String productImageUrl;
+  String imageUrl;
   File image;
   int createdByUserId;
   int modifiedByUserId;
@@ -24,7 +24,7 @@ class Product {
         productDetails = json['productDetails'],
         productBrand = json['productBrand'],
         productBarcode = json['productBarcode'],
-        productImageUrl = json['productImageUrl'],
+        imageUrl = json['imageUrl'],
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
         createdDate = (json['createdDate'] != null
@@ -41,7 +41,7 @@ class Product {
         'productDetails': productDetails,
         'productBrand ': productBrand,
         'productBarcode': productBarcode,
-        'productImageUrl': productImageUrl,
+        'imageUrl': imageUrl,
         if (createdDate != null) 'createdDate': createdDate.toString(),
         if (modifiedDate != null) 'modifiedDate': modifiedDate.toString(),
         'createdByUserId': createdByUserId,

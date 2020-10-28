@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping/providers/auth_provider.dart';
 import 'package:shopping/screens/home/admin_home_screen.dart';
+import 'package:shopping/screens/home/user_home_screen.dart';
 import 'package:shopping/screens/login/login_screen.dart';
 import 'package:shopping/screens/product/product_list.dart';
 
@@ -29,7 +30,9 @@ class AppDrawer extends StatelessWidget {
             trailing: Container(child: Icon(Icons.arrow_forward),),
             title: Text('Logout' ,style: TextStyle(fontSize: 16),),
             onTap: () {
-              Navigator.popAndPushNamed(context, LoginScreen.routeName);
+              _authProvider.logout();
+              Navigator.popUntil(context, (route) => false);
+              Navigator.pushNamed(context, LoginScreen.routeName);
             },
           ),
           if (_authProvider.loggedInUser.role == 'Admin')
@@ -56,7 +59,7 @@ class AppDrawer extends StatelessWidget {
               trailing: Container(child: Icon(Icons.arrow_forward),),
               title: Text('Home' ,style: TextStyle(fontSize: 16),),
               onTap: () {
-                Navigator.popAndPushNamed(context, AdminHomeScreen.routeName);
+                Navigator.popAndPushNamed(context, UserHomeScreen.routeName);
               },
             ),
         ],

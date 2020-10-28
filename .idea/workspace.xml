@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="271c0040-2c3e-431b-aac4-b8fc9f4a3b2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/upload_route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/upload_route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopping/lib/screens/home/admin_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/shopping/lib/screens/home/admin_home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopping/lib/providers/auth_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/shopping/lib/providers/auth_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopping/lib/screens/home/user_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/shopping/lib/screens/home/user_home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopping/lib/screens/product/product_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/shopping/lib/screens/product/product_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopping/lib/screens/login/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/shopping/lib/screens/login/login_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopping/lib/widgets/drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/shopping/lib/widgets/drawer.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +90,7 @@
       <workItem from="1601552145712" duration="1087000" />
       <workItem from="1602393650126" duration="829000" />
       <workItem from="1603358862787" duration="36645000" />
-      <workItem from="1603774674116" duration="31025000" />
+      <workItem from="1603774674116" duration="32370000" />
     </task>
     <servers />
   </component>

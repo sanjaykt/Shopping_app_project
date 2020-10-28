@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.all(18),
         child: Form(
           key: _formKey,
-          child: Column(
+          child: ListView(
             children: <Widget>[
               _buildHeadingText(),
               SizedBox(height: 5),
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildUsernameTextFormField() {
     return TextFormField(
       keyboardType: TextInputType.text,
-      initialValue: 'admin',
+      initialValue: 'user',
       decoration: InputDecoration(
         border: OutlineInputBorder(borderSide: BorderSide.none),
         prefixIcon: Icon(

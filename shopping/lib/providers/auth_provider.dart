@@ -32,4 +32,9 @@ class AuthProvider extends ChangeNotifier {
       if (handler != null) handler();
     }
   }
+
+  logout() {
+    _loggedInUser = null;
+  }
+
 }

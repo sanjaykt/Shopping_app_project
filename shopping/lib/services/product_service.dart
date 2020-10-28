@@ -134,41 +134,49 @@ class ProductService {
 
   Future<ServerResponse> uploadImageMultiPart(
       Product product, String imagePath) async {
+    ServerResponse serverResponse;
     String url = Constants.SERVER + UPLOAD_IMAGE;
 
     try {
       // String filename = product.image.path.split("/").last;
-      String filename = imagePath;
       var request = http.MultipartRequest('POST', Uri.parse(url));
-      request.files.add(await http.MultipartFile.fromPath('image', filename));
-      var res = await request.send();
-      print(res);
+      request.files.add(await http.MultipartFile.fromPath('image', imagePath));
+      request.fields.addAll({'productId': '${product.id.toString()}'});
+      // var res = await request.send();
+      // print(res);
+      http.StreamedResponse response = await request.send();
+      logger.d(response.stream.bytesToString());
+      serverResponse =
+          ServerResponse(status: SUCCESS, message: '...', data: null);
+      return serverResponse;
     } catch (error) {
-      print(error);
+      serverResponse =
+          ServerResponse(status: FAILED, message: error.toString(), data: null);
+      logger.d(error.toString());
+      return serverResponse;
     }
-
-    // try {
-    //   var request = MultipartRequest();
-    //
-    //   request.setUrl(url);
-    //   request.addFile("image", imagePath);
-    //
-    //   Response response = request.send();
-    //
-    //   response.onError = () {
-    //     print("Error");
-    //   };
-    //
-    //   response.onComplete = (response) {
-    //     print(response);
-    //   };
-    //
-    //   response.progress.listen((int progress) {
-    //     print("progress from response object " + progress.toString());
-    //   });
-    // } catch (error) {
-    //   print(error);
-    // }
-    return null;
   }
 }
+
+// try {
+//   var request = MultipartRequest();
+//
+//   request.setUrl(url);
+//   request.addFile("image", imagePath);
+//
+//   Response response = request.send();
+//
+//   response.onError = () {
+//     print("Error");
+//   };
+//
+//   response.onComplete = (response) {
+//     print(response);
+//   };
+//
+//   response.progress.listen((int progress) {
+//     print("progress from response object " + progress.toString());
+//   });
+// } catch (error) {
+//   print(error);
+// }

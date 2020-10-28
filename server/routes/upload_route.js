@@ -4,22 +4,58 @@ const response = require('./../response');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const Product = require('./../models/product');
+const logger = require('logger').createLogger(); // logs to STDOUT
+
+// const fileFilter = (req, file, cb) => {
+//     if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
+//         cb(null, true);
+//     } else {
+//         cb(null, false);
+//     }
+// }
+//
+// const upload = multer({dest: 'server/images/', fileFilter: fileFilter});
 
 
-const upload = multer({dest: 'server/images/'})
+const upload = multer({dest: 'server/images/'});
 
 
 router.post('/upload_image', upload.single("image"), function (req, res) {
-    console.log("Received file" + req.file.originalname);
+    logger.info('Received file', req.file.originalname);
+    const productId = req.body.productId;
     const src = fs.createReadStream(req.file.path);
     const dest = fs.createWriteStream('server/images/' + req.file.originalname);
     src.pipe(dest);
     src.on('end', function () {
         fs.unlinkSync(req.file.path);
-        res.json('OK: received ' + req.file.originalname);
+        Product.findByPk(productId).then((foundProduct) => {
+            foundProduct.imageUrl = `server/images/${req.file.originalname.toString()}`;
+            logger.info('imageUrl: ', foundProduct.imageUrl);
+            logger.info('foundProduct before saving:', foundProduct);
+            foundProduct.save().then(() => {
+                logger.info('saved url successfully')
+                logger.info('foundProduct after saving:', foundProduct)
+            }).catch((error) => {
+                logger.error('failed to save the url', error.toString());
+            })
+        }).catch((error) => {
+            logger.error('failed to find the product', error.toString());
+        })
+        response.response({
+            res: res,
+            data: null,
+            status: response.SUCCESS,
+            message: `Image "${req.file.originalname}" uploaded successfully!`
+        })
     });
     src.on('error', function (err) {
-        res.json('Something went wrong!');
+        response.response({
+            res: res,
+            data: null,
+            status: response.FAILED,
+            message: 'Failed to upload the image!'
+        })
     });
 
 })

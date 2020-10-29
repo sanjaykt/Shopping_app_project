@@ -12,9 +12,10 @@ CREATE TABLE Users
     lastName         VARCHAR(128)             NOT NULL,
     username         varchar(128)             NOT NULL,
     password         varchar(128)             NOT NULL,
-    email            VARCHAR(128)             NULL,
+    email            VARCHAR(128)                      DEFAULT NULL,
     phoneNumber      INT(16),
     role             enum ('Admin','Regular') NOT NULL DEFAULT 'Regular',
+    imageUrl         VARCHAR(128)                      DEFAULT NULL,
     createdByUserId  int(11)                  NOT NULL,
     createdDate      datetime                 NOT NULL,
     modifiedByUserId int(11)                  NOT NULL,
@@ -44,7 +45,7 @@ DROP TABLE IF EXISTS Carts;
 create table Carts
 (
     id               int AUTO_INCREMENT,
-    productId        INT      NOT NULL,
+    itemId        INT      NOT NULL,
     userId           INT      NOT NULL,
     total            INT      NOT NULL,
     createdByUserId  int      not null,
@@ -53,7 +54,7 @@ create table Carts
     modifiedDate     datetime not null,
     statusId         int      not null,
     PRIMARY KEY (id),
-    FOREIGN KEY (productId) REFERENCES Products (id),
+    FOREIGN KEY (itemId) REFERENCES Items (id),
     FOREIGN KEY (userId) REFERENCES Users (id)
 );
 
@@ -61,7 +62,7 @@ DROP TABLE IF EXISTS Orders;
 create table Orders
 (
     id               int AUTO_INCREMENT,
-    productId        INT      NOT NULL,
+    itemId        INT      NOT NULL,
     userId           INT      NOT NULL,
     cartId           INT      NOT NULL,
     total            INT      NOT NULL,
@@ -71,7 +72,23 @@ create table Orders
     modifiedDate     datetime not null,
     statusId         int      not null,
     PRIMARY KEY (id),
-    FOREIGN KEY (productId) REFERENCES Products (id),
+    FOREIGN KEY (itemId) REFERENCES Items (id),
     FOREIGN KEY (userId) REFERENCES Users (id),
     FOREIGN KEY (cartId) REFERENCES Carts (id)
+);
+
+DROP TABLE IF EXISTS Items;
+create table Items
+(
+    id               int AUTO_INCREMENT,
+    productId        INT      NOT NULL,
+    quantity         INT      NOT NULL,
+    total            INT      NOT NULL,
+    createdByUserId  int      not null,
+    createdDate      datetime not null,
+    modifiedByUserId int      not null,
+    modifiedDate     datetime not null,
+    statusId         int      not null,
+    PRIMARY KEY (id),
+    FOREIGN KEY (productId) REFERENCES Products (id)
 );

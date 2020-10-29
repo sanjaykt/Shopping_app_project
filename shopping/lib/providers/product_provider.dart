@@ -26,6 +26,10 @@ class ProductProvider extends ChangeNotifier {
 
   loginHandler() async {}
 
+  Product getProduct(int id) {
+    return _productMap[id];
+  }
+
   Future<ServerResponse> getAllProducts() async {
     ServerResponse serverResponse;
 
@@ -127,21 +131,21 @@ class ProductProvider extends ChangeNotifier {
     return serverResponse;
   }
 
-  tempUploadImage(Product productEdit) {
-    for (var product in _productList) {
-      if (product.id == productEdit.id) {
-        product.image = productEdit.image;
-      }
-    }
-    notifyListeners();
-  }
-
-  uploadImage(Product product) async {
-    ServerResponse serverResponse = await _productService.uploadImage(product);
-    if (serverResponse.status == SUCCESS) {
-      serverResponse.message = 'uploaded successfully!';
-    }
-  }
+  // tempUploadImage(Product productEdit) {
+  //   for (var product in _productList) {
+  //     if (product.id == productEdit.id) {
+  //       product.image = productEdit.image;
+  //     }
+  //   }
+  //   notifyListeners();
+  // }
+  //
+  // uploadImage(Product product) async {
+  //   ServerResponse serverResponse = await _productService.uploadImage(product);
+  //   if (serverResponse.status == SUCCESS) {
+  //     serverResponse.message = 'uploaded successfully!';
+  //   }
+  // }
 
   uploadImageMultiPart(Product product, String imagePath) async {
     ServerResponse serverResponse =

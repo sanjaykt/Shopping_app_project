@@ -30,3 +30,4 @@ Server/files/*
 
 /server/node_modules/
 .idea/
+/.idea/

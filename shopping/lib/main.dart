@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:shopping/screens/product/user_product_details_screen.dart';
 
 import 'common/constants.dart';
 import 'providers/Database_provider.dart';
@@ -83,68 +84,10 @@ class MyApp extends StatelessWidget {
               ProductListScreen(),
           ProductDetailsScreen.routeName: (BuildContext context) =>
               ProductDetailsScreen(),
+          UserProductDetailsScreen.routeName: (BuildContext context) =>
+              UserProductDetailsScreen(),
         },
       ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            RaisedButton(
-              color: Theme.of(context).accentColor,
-              child: Text('Go To Server'),
-              onPressed: () async {
-                http.Response response =
-                    await http.get(Constants.SERVER, headers: Constants.HEADER);
-                // await http.get('http://192.168.43.122:8080', headers: {"Content-Type": "application/json"});
-                print(response);
-              },
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).accentColor,
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

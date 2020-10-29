@@ -5,6 +5,7 @@ import 'package:shopping/common/constants.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/auth_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
+import 'package:shopping/screens/product/user_product_details_screen.dart';
 import 'package:shopping/widgets/drawer.dart';
 
 class UserHomeScreen extends StatefulWidget {
@@ -30,7 +31,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           children: [
             _buildHeading('Furniture'),
             _buildProductGrid(),
-            Divider(color: Colors.red,),
+            Divider(
+              color: Colors.red,
+            ),
             _buildHeading('Clothing')
           ],
         ));
@@ -60,26 +63,37 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     crossAxisCount: 2, childAspectRatio: .9),
                 itemCount: products.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 100,
-                    width: 50,
-                    child: Card(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            _buildImageSizedBox(products[index]),
-                            Text(products[index].productName),
-                            Text(products[index].productDetails),
-                          ],
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              UserProductDetailsScreen(id: products[index].id),
                         ),
+                      );
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 50,
+                      child: Card(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              _buildImageSizedBox(products[index]),
+                              Text(products[index].productName),
+                              Text(products[index].productDetails),
+                            ],
+                          ),
+                        ),
+                        // child: ListTile(
+                        //   leading: _buildImageSizedBox(products[index]),
+                        //   title: Text(products[index].productName),
+                        //   subtitle: Text(products[index].productDetails),
+                        // ),
                       ),
-                      // child: ListTile(
-                      //   leading: _buildImageSizedBox(products[index]),
-                      //   title: Text(products[index].productName),
-                      //   subtitle: Text(products[index].productDetails),
-                      // ),
                     ),
                   );
                 },
@@ -90,7 +104,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               );
             }
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         },
       ),
     );

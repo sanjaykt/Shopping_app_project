@@ -1,26 +1,24 @@
 import 'dart:io';
 
-class Order {
+class Item {
   int id;
-  int itemId;
-  int userId;
-  int cartId;
-  int total;
+  int productId;
+  int quantity;
+  String total;
   int createdByUserId;
   int modifiedByUserId;
   DateTime createdDate;
   DateTime modifiedDate;
   int statusId;
 
-  Order();
+  Item();
 
-  clone() => Order.fromJson(toJson());
+  clone() => Item.fromJson(toJson());
 
-  Order.fromJson(Map<String, dynamic> json)
+  Item.fromJson(Map<String, dynamic> json)
       : id = json['id'],
-        itemId = json['itemId'],
-        userId = json['userId'],
-        cartId = json['cartId'],
+        productId = json['productId'],
+        quantity = json['quantity'],
         total = json['total'],
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
@@ -34,10 +32,9 @@ class Order {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'itemId': itemId,
-        'userId': userId,
-        'cartId ': cartId,
-        'total': total,
+        'productId': productId,
+        'quantity': quantity,
+        'total ': total,
         if (createdDate != null) 'createdDate': createdDate.toString(),
         if (modifiedDate != null) 'modifiedDate': modifiedDate.toString(),
         'createdByUserId': createdByUserId,

@@ -23,6 +23,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   TextEditingController _productDetailsCtrl = TextEditingController();
   TextEditingController _productBrandCtrl = TextEditingController();
   TextEditingController _productBarcodeCtrl = TextEditingController();
+  TextEditingController _productPriceCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     _productProvider = Provider.of<ProductProvider>(context);
@@ -33,6 +34,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         productEditOrCreate = widget.productToBeEdited.clone();
         _productNameCtrl.text = productEditOrCreate.productName;
         _productDetailsCtrl.text = productEditOrCreate.productDetails;
+        _productBrandCtrl.text = productEditOrCreate.productBrand.toString();
+        _productBarcodeCtrl.text = productEditOrCreate.productBarcode;
+        _productPriceCtrl.text = productEditOrCreate.price.toString();
       }
     }
 
@@ -50,6 +54,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               buildProductDetailsTextFormField(),
               buildProductBrandTextFormField(),
               buildProductBarCodeTextFormField(),
+              buildProductPriceTextFormField(),
               Divider(),
               _buildSubmitButton(context),
             ],
@@ -152,6 +157,30 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       },
       onSaved: (value) {
         productEditOrCreate.productDetails = value;
+      },
+    );
+  }
+
+  Widget buildProductPriceTextFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      controller: _productPriceCtrl,
+      decoration: InputDecoration(
+//                  border: OutlineInputBorder(borderSide: BorderSide.none),
+        prefixIcon: Icon(
+          Icons.money,
+          // color: kOnBackgroundColor,
+        ),
+        labelText: 'product price',
+        hintText: 'product price',
+//                  filled: true,
+//                  fillColor: kPrimaryColor200,
+      ),
+      onChanged: (value) {
+        productEditOrCreate.price = double.parse(value).toDouble();
+      },
+      onSaved: (value) {
+        productEditOrCreate.price = double.parse(value).toDouble();
       },
     );
   }

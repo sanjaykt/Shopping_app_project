@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/screens/product/user_product_details_screen.dart';
 
 import 'common/constants.dart';
@@ -47,6 +48,12 @@ class MyApp extends StatelessWidget {
           update: (context, authProvider, databaseProvider, productProvider) =>
               productProvider..update(authProvider, databaseProvider),
         ),
+        ChangeNotifierProxyProvider<AuthProvider, CartProvider>(
+          create: (context) => CartProvider(),
+          lazy: false,
+          update: (context, authProvider, cartProvider) =>
+              cartProvider..update(authProvider),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -62,13 +69,13 @@ class MyApp extends StatelessWidget {
               bodyText2:
                   TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
           buttonTheme: ButtonThemeData(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-                // side: BorderSide(color: Theme.of(context).accentColor, width: 5),
-              ),
-              buttonColor: Theme.of(context).accentColor
-              // textTheme: ButtonTextTheme.primary
-              ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              // side: BorderSide(color: Theme.of(context).accentColor, width: 5),
+            ),
+            buttonColor: MyColors.accentColor,
+            // textTheme: ButtonTextTheme.primary
+          ),
           backgroundColor: Colors.grey.shade50,
           cursorColor: Colors.redAccent,
           colorScheme: ColorScheme.light(),

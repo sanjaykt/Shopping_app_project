@@ -83,6 +83,7 @@ router.put('/product/edit', (req, res) => {
         foundProduct.productDetails = product.productDetails;
         foundProduct.productBrand = product.productBrand;
         foundProduct.productBarcode = product.productBarcode;
+        foundProduct.price = product.price;
         foundProduct.createdByUserId = 1;
         foundProduct.modifiedByUserId = 1;
         foundProduct.statusId = 1

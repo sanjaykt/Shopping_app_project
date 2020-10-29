@@ -103,34 +103,34 @@ class ProductService {
   //   }
   // }
 
-  Future<ServerResponse> uploadImage(Product product) async {
-    String url = Constants.SERVER + UPLOAD_IMAGE;
-    String fileUrl;
-    ServerResponse serverResponse;
-    String identifier = DateTime.now().millisecondsSinceEpoch.toString();
-
-    try {
-      String fileName = product.image.path.split("/").last;
-      String base64Image = base64Encode(product.image.readAsBytesSync());
-
-      var bodyJson = {
-        'image': base64Image,
-        'fileName': fileName,
-        'identifier': identifier,
-      };
-      var body = json.encode(bodyJson);
-      http.Response response =
-          await http.post(url, body: body, headers: Constants.HEADER_FORM_DATA);
-
-      var responseJson = json.decode(response.body);
-      ServerResponse serverResponse = ServerResponse.fromJson(responseJson);
-      // serverResponse.data = Product.fromJson(serverResponse.data);
-      return serverResponse;
-    } catch (error) {
-      return ServerResponse(
-          status: FAILED, data: null, message: error.toString());
-    }
-  }
+  // Future<ServerResponse> uploadImage(Product product) async {
+  //   String url = Constants.SERVER + UPLOAD_IMAGE;
+  //   String fileUrl;
+  //   ServerResponse serverResponse;
+  //   String identifier = DateTime.now().millisecondsSinceEpoch.toString();
+  //
+  //   try {
+  //     String fileName = product.image.path.split("/").last;
+  //     String base64Image = base64Encode(product.image.readAsBytesSync());
+  //
+  //     var bodyJson = {
+  //       'image': base64Image,
+  //       'fileName': fileName,
+  //       'identifier': identifier,
+  //     };
+  //     var body = json.encode(bodyJson);
+  //     http.Response response =
+  //         await http.post(url, body: body, headers: Constants.HEADER_FORM_DATA);
+  //
+  //     var responseJson = json.decode(response.body);
+  //     ServerResponse serverResponse = ServerResponse.fromJson(responseJson);
+  //     // serverResponse.data = Product.fromJson(serverResponse.data);
+  //     return serverResponse;
+  //   } catch (error) {
+  //     return ServerResponse(
+  //         status: FAILED, data: null, message: error.toString());
+  //   }
+  // }
 
   Future<ServerResponse> uploadImageMultiPart(
       Product product, String imagePath) async {

@@ -69,7 +69,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (BuildContext context) =>
-                              UserProductDetailsScreen(id: products[index].id),
+                              UserProductDetailsScreen(productId: products[index].id),
                         ),
                       );
                     },

@@ -180,4 +180,5 @@ class _ProductListScreenState extends State<ProductListScreen> {
       // : Image.file(products[index].image),
     );
   }
+
 }

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shopping/providers/cart_provider.dart';
+import 'package:shopping/screens/cart/cart_screen.dart';
 import 'package:shopping/screens/product/user_product_details_screen.dart';
 
 import 'common/constants.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
               ProductDetailsScreen(),
           UserProductDetailsScreen.routeName: (BuildContext context) =>
               UserProductDetailsScreen(),
+          CartScreen.routeName: (BuildContext context) => CartScreen(),
         },
       ),
     );

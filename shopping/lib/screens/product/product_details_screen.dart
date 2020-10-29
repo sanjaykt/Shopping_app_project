@@ -7,6 +7,7 @@ import 'package:shopping/providers/product_provider.dart';
 class ProductDetailsScreen extends StatefulWidget {
   static final routeName = 'product_details_screen';
   final Product productToBeEdited;
+
 //  final ProductProvider productProvider;
 //
   ProductDetailsScreen({this.productToBeEdited});
@@ -24,6 +25,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   TextEditingController _productBrandCtrl = TextEditingController();
   TextEditingController _productBarcodeCtrl = TextEditingController();
   TextEditingController _productPriceCtrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     _productProvider = Provider.of<ProductProvider>(context);
@@ -111,6 +113,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       },
     );
   }
+
   Widget buildProductBarCodeTextFormField() {
     return TextFormField(
       keyboardType: TextInputType.text,
@@ -193,9 +196,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           _formKey.currentState.save();
           ServerResponse serverResponse = ServerResponse();
           if (widget.productToBeEdited == null) {
-            serverResponse = await _productProvider.createProduct(productEditOrCreate);
+            serverResponse =
+                await _productProvider.createProduct(productEditOrCreate);
           } else {
-            serverResponse = await _productProvider.editProduct(productEditOrCreate);
+            serverResponse =
+                await _productProvider.editProduct(productEditOrCreate);
           }
           print(serverResponse.message);
           if (serverResponse.status == SUCCESS) {

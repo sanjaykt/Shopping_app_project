@@ -6,6 +6,7 @@ import 'package:shopping/models/item.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
+import 'package:shopping/screens/cart/cart_screen.dart';
 import 'package:shopping/widgets/drawer.dart';
 
 class UserProductDetailsScreen extends StatefulWidget {
@@ -38,9 +39,26 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Product Details'),
-      ),
+      appBar: AppBar(title: Text('Product Details'), actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Row(
+            children: [
+              IconButton(
+                  icon: Icon(
+                    Icons.shopping_basket,
+                    size: 40,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, CartScreen.routeName);
+                  }),
+              SizedBox(width: 5),
+              if (_cartProvider.itemList.isNotEmpty)
+                Text(_cartProvider.itemList.length.toString()),
+            ],
+          ),
+        ),
+      ]),
       drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(18),
@@ -48,14 +66,20 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
           children: [
             Center(
               child: Container(
-                child: Text(_product.productName.toString(), style: TextStyle(fontSize: 18),),
+                child: Text(
+                  _product.productName.toString(),
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
             ),
             SizedBox(height: 20),
             _buildImageSizedBox(_product),
             SizedBox(height: 20),
             Center(
-              child: Text(_product.productDetails.toString(), style: TextStyle(fontSize: 14),),
+              child: Text(
+                _product.productDetails.toString(),
+                style: TextStyle(fontSize: 14),
+              ),
             ),
             SizedBox(height: 40),
             Divider(
@@ -71,11 +95,10 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
                   child: Text('Add to Cart'),
                   onPressed: () {
                     Item item = Item();
-                    item.productId = widget.productId;
+                    item.productId = _product.id;
                     item.quantity = 1;
-                    // item.total = item.quantity *
                     _cartProvider.addItem(item);
-              }),
+                  }),
             )
           ],
         ),

@@ -7,6 +7,7 @@ import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
 import 'package:shopping/screens/cart/cart_screen.dart';
+import 'package:shopping/widgets/widget_repo.dart';
 import 'package:shopping/widgets/drawer.dart';
 
 class UserProductDetailsScreen extends StatefulWidget {
@@ -39,26 +40,7 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text('Product Details'), actions: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: Row(
-            children: [
-              IconButton(
-                  icon: Icon(
-                    Icons.shopping_basket,
-                    size: 40,
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, CartScreen.routeName);
-                  }),
-              SizedBox(width: 5),
-              if (_cartProvider.itemList.isNotEmpty)
-                Text(_cartProvider.itemCount.toString()),
-            ],
-          ),
-        ),
-      ]),
+      appBar: WidgetRepo.getCustomAppBar(context, _cartProvider, 'Product Details'),
       drawer: AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(18),
@@ -94,11 +76,8 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
               child: RaisedButton(
                   child: Text('Add to Cart'),
                   onPressed: () {
-                    Item item = Item();
-                    item.productId = _product.id;
-                    item.quantity = 1;
-                    item.price = _product.price;
-                    _cartProvider.addItem(item);
+
+                    _cartProvider.addItem(_product);
                   }),
             )
           ],

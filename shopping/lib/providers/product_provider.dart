@@ -22,9 +22,15 @@ class ProductProvider extends ChangeNotifier {
     this._authProvider = authProvider;
 
     _authProvider.addLoginHandler('ProductProvider', loginHandler);
+    _authProvider.addLogoutHandler('ProductProvider', logoutHandler);
   }
 
   loginHandler() async {}
+
+  logoutHandler() {
+    _productList.clear();
+    _productMap.clear();
+  }
 
   Product getProduct(int id) {
     return _productMap[id];

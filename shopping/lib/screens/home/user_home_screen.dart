@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/auth_provider.dart';
+import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
 import 'package:shopping/screens/product/user_product_details_screen.dart';
 import 'package:shopping/widgets/drawer.dart';
 import 'package:shopping/widgets/image_sized_box.dart';
+import 'package:shopping/widgets/widget_repo.dart';
 
 class UserHomeScreen extends StatefulWidget {
   static final routeName = 'user_home_screen';
@@ -17,14 +19,16 @@ class UserHomeScreen extends StatefulWidget {
 class _UserHomeScreenState extends State<UserHomeScreen> {
   AuthProvider _authProvider;
   ProductProvider _productProvider;
+  CartProvider _cartProvider;
 
   @override
   Widget build(BuildContext context) {
     _authProvider = Provider.of<AuthProvider>(context);
     _productProvider = Provider.of<ProductProvider>(context);
+    _cartProvider = Provider.of<CartProvider>(context);
 
     return Scaffold(
-        appBar: AppBar(title: Text('User Home')),
+        appBar: WidgetRepo.getCustomAppBar(context, _cartProvider, 'User Home'),
         drawer: _authProvider.loggedInUser != null ? AppDrawer() : null,
         body: ListView(
           children: [

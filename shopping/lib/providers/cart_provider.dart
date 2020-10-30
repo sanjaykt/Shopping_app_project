@@ -1,6 +1,7 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shopping/models/item.dart';
+import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/auth_provider.dart';
 
 class CartProvider extends ChangeNotifier {
@@ -16,41 +17,42 @@ class CartProvider extends ChangeNotifier {
     this._authProvider = authProvider;
 
     _authProvider.addLoginHandler('CartProvider', loginHandler);
+    _authProvider.addLogoutHandler('CartProvider', logoutHandler);
   }
 
   loginHandler() async {}
 
-  addItem(Item item) {
-    if (_itemList.isNotEmpty) {
-      int index = _itemList
-          .indexWhere((element) => element.productId == item.productId);
-      if (index == -1) {
-        item.total = item.price;
-        _itemList.add(item);
-      } else {
-        item.total += item.price;
-        _itemList[index].quantity += 1;
-      }
-    } else {
-      item.total = item.price;
-      _itemList.add(item);
-    }
-    _itemCount += 1;
+  logoutHandler() {
+    _itemCount = 0;
+    _itemList.clear();
+  }
 
+  addItem(Product product) {
+    int index;
+    if (_itemList.isNotEmpty) {
+      index =
+          _itemList.indexWhere((element) => element.productId == product.id);
+    }
+
+    // add item if list is empty or no duplicate in the list, add item
+    if (index == null || index == -1) {
+      Item item = Item();
+      item.productId = product.id;
+      item.price = product.price;
+      item.total = item.price;
+      item.quantity = 1;
+      _itemList.add(item);
+      _itemCount += 1;
+    } else {
+      _itemList[index].quantity += 1;
+      _itemList[index].total += _itemList[index].price;
+      _itemCount += 1;
+    }
     notifyListeners();
   }
 
   replaceItem(Item item) {
-    // _items.map((i) => i.id == item.id);
-    //
-    // for (var i in _items) {
-    //   if (i.id == item.id) {
-    //     i = item;
-    //     break;
-    //   }
-    // }
     int index = _itemList.indexOf(item);
-    // _items.replaceRange(index, index+1, [item]);
     _itemList.removeAt(index);
     _itemList.insert(index, item);
   }

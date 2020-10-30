@@ -4,7 +4,8 @@ class Item {
   int id;
   int productId;
   int quantity;
-  String total;
+  double price;
+  double total;
   int createdByUserId;
   int modifiedByUserId;
   DateTime createdDate;
@@ -19,7 +20,8 @@ class Item {
       : id = json['id'],
         productId = json['productId'],
         quantity = json['quantity'],
-        total = json['total'],
+        price = json['price'],
+        total = json['total'] != null ? json['total'].toDouble() : null,
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
         createdDate = (json['createdDate'] != null
@@ -34,6 +36,7 @@ class Item {
         'id': id,
         'productId': productId,
         'quantity': quantity,
+        'price': price,
         'total ': total,
         if (createdDate != null) 'createdDate': createdDate.toString(),
         if (modifiedDate != null) 'modifiedDate': modifiedDate.toString(),

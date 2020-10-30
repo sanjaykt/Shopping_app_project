@@ -5,7 +5,7 @@ class Order {
   int itemId;
   int userId;
   int cartId;
-  int total;
+  double total;
   int createdByUserId;
   int modifiedByUserId;
   DateTime createdDate;
@@ -21,7 +21,7 @@ class Order {
         itemId = json['itemId'],
         userId = json['userId'],
         cartId = json['cartId'],
-        total = json['total'],
+        total = json['total'] != null ? json['total'].toDouble() : null,
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
         createdDate = (json['createdDate'] != null

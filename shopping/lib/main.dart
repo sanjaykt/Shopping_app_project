@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/screens/cart/cart_screen.dart';
+import 'package:shopping/screens/order/order_screen.dart';
 import 'package:shopping/screens/product/user_product_details_screen.dart';
 
 import 'common/constants.dart';
@@ -12,7 +13,7 @@ import 'providers/auth_provider.dart';
 import 'screens/home/admin_home_screen.dart';
 import 'screens/home/user_home_screen.dart';
 import 'screens/login/login_screen.dart';
-import 'screens/product/product_details_screen.dart';
+import 'screens/product/admin_product_details_screen.dart';
 import 'screens/product/product_list.dart';
 import 'screens/user/user_details.dart';
 import 'providers/user_provider.dart';
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
               bodyText2:
                   TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
           buttonTheme: ButtonThemeData(
+            height: 50,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
               // side: BorderSide(color: Theme.of(context).accentColor, width: 5),
@@ -95,6 +97,7 @@ class MyApp extends StatelessWidget {
           UserProductDetailsScreen.routeName: (BuildContext context) =>
               UserProductDetailsScreen(),
           CartScreen.routeName: (BuildContext context) => CartScreen(),
+          OrderScreen.routeName: (BuildContext context) => OrderScreen(),
         },
       ),
     );

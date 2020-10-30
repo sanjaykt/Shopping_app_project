@@ -4,7 +4,7 @@ class Cart {
   int id;
   int itemId;
   int userId;
-  int total;
+  double total;
   int createdByUserId;
   int modifiedByUserId;
   DateTime createdDate;
@@ -19,7 +19,7 @@ class Cart {
       : id = json['id'],
         itemId = json['itemId'],
         userId = json['userId'],
-        total = json['total'],
+        total = json['total'] != null ? json['total'].toDouble : null,
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
         createdDate = (json['createdDate'] != null

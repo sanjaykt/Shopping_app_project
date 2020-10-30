@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping/common/constants.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/product_provider.dart';
-import 'package:shopping/screens/product/product_details_screen.dart';
+import 'package:shopping/screens/product/admin_product_details_screen.dart';
 import 'package:shopping/widgets/drawer.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -180,5 +180,4 @@ class _ProductListScreenState extends State<ProductListScreen> {
       // : Image.file(products[index].image),
     );
   }
-
 }

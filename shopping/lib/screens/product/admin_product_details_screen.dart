@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/common/constants.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/models/server_response.dart';
 import 'package:shopping/providers/product_provider.dart';
@@ -8,8 +9,6 @@ class ProductDetailsScreen extends StatefulWidget {
   static final routeName = 'product_details_screen';
   final Product productToBeEdited;
 
-//  final ProductProvider productProvider;
-//
   ProductDetailsScreen({this.productToBeEdited});
 
   @override
@@ -71,15 +70,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       keyboardType: TextInputType.text,
       controller: _productNameCtrl,
       decoration: InputDecoration(
-//                  border: OutlineInputBorder(borderSide: BorderSide.none),
-        prefixIcon: Icon(
-          Icons.label,
-          // color: kOnBackgroundColor,
-        ),
+        prefixIcon: Icon(Icons.label),
         labelText: 'product name',
         hintText: 'product name',
-//                  filled: true,
-//                  fillColor: kPrimaryColor200,
       ),
       onChanged: (value) {
         productEditOrCreate.productName = value;
@@ -95,15 +88,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       keyboardType: TextInputType.text,
       controller: _productBrandCtrl,
       decoration: InputDecoration(
-//                  border: OutlineInputBorder(borderSide: BorderSide.none),
-        prefixIcon: Icon(
-          Icons.label,
-          // color: kOnBackgroundColor,
-        ),
+        prefixIcon: Icon(Icons.label),
         labelText: 'product brand',
         hintText: 'product brand',
-//                  filled: true,
-//                  fillColor: kPrimaryColor200,
       ),
       onChanged: (value) {
         productEditOrCreate.productBrand = value;
@@ -119,15 +106,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       keyboardType: TextInputType.text,
       controller: _productBarcodeCtrl,
       decoration: InputDecoration(
-//                  border: OutlineInputBorder(borderSide: BorderSide.none),
-        prefixIcon: Icon(
-          Icons.label,
-          // color: kOnBackgroundColor,
-        ),
+        prefixIcon: Icon(Icons.label),
         labelText: 'product barcode',
         hintText: 'product barcode',
-//                  filled: true,
-//                  fillColor: kPrimaryColor200,
       ),
       onChanged: (value) {
         productEditOrCreate.productBarcode = value;
@@ -145,15 +126,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       maxLines: 5,
       minLines: 3,
       decoration: InputDecoration(
-//                  border: OutlineInputBorder(borderSide: BorderSide.none),
-        prefixIcon: Icon(
-          Icons.more,
-          // color: kOnBackgroundColor,
-        ),
+        prefixIcon: Icon(Icons.more),
         labelText: 'product details',
         hintText: 'product details',
-//                  filled: true,
-//                  fillColor: kPrimaryColor200,
       ),
       onChanged: (value) {
         productEditOrCreate.productDetails = value;
@@ -169,15 +144,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       controller: _productPriceCtrl,
       decoration: InputDecoration(
-//                  border: OutlineInputBorder(borderSide: BorderSide.none),
-        prefixIcon: Icon(
-          Icons.money,
-          // color: kOnBackgroundColor,
-        ),
+        prefixIcon: Icon(Icons.money),
         labelText: 'product price',
         hintText: 'product price',
-//                  filled: true,
-//                  fillColor: kPrimaryColor200,
       ),
       onChanged: (value) {
         productEditOrCreate.price = double.parse(value).toDouble();
@@ -193,7 +162,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       child: widget.productToBeEdited == null ? Text('Create') : Text('Update'),
       onPressed: () async {
         if (_formKey.currentState.validate()) {
-          _formKey.currentState.save();
+          try {
+            _formKey.currentState.save();
+          } catch(error) {
+            logger.d(error);
+          }
           ServerResponse serverResponse = ServerResponse();
           if (widget.productToBeEdited == null) {
             serverResponse =

@@ -1,11 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/common/constants.dart';
+import 'package:shopping/main.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
+import 'package:shopping/screens/order/order_screen.dart';
 import 'package:shopping/widgets/drawer.dart';
+import 'package:shopping/widgets/image_sized_box.dart';
 
 class CartScreen extends StatefulWidget {
   static final routeName = 'cart_screen';
@@ -33,15 +34,7 @@ class _CartScreenState extends State<CartScreen> {
           children: [
             _buildItemList(),
             SizedBox(height: 50),
-            Container(
-              height: 50,
-              child: RaisedButton(
-                child: Text('Proceed to Buy'),
-                onPressed: () {
-
-                },
-              ),
-            )
+            _buildProceedToBuy()
           ],
         ),
       ),
@@ -60,7 +53,7 @@ class _CartScreenState extends State<CartScreen> {
               child: Column(
                 children: [
                   ListTile(
-                    leading: _buildImageSizedBox(product),
+                    leading: ImageSizedBox(product),
                     title: Text(product.productName),
                     subtitle: Text(
                       product.productDetails +
@@ -77,7 +70,8 @@ class _CartScreenState extends State<CartScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 20),
                       child: RaisedButton(
-                        child: Text('Delete'),
+                        color: MyColors.accentColorLight,
+                        child: Text('Delete', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),),
                         onPressed: () {
                           _cartProvider.deleteItem(i);
                         },
@@ -87,7 +81,6 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
             ),
-
           ),
         );
       }
@@ -95,17 +88,15 @@ class _CartScreenState extends State<CartScreen> {
     return Column(children: itemCards);
   }
 
-  Widget _buildImageSizedBox(Product product) {
-    return SizedBox(
-      height: 200,
-      child: product.imageUrl != null
-          ? CachedNetworkImage(
-              imageUrl: Constants.SERVER + product.imageUrl,
-              placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            )
-          : Container(child: Text('no image')),
+  Widget _buildProceedToBuy() {
+    return Container(
+      height: 50,
+      child: RaisedButton(
+        child: Text('Proceed to Buy'),
+        onPressed: () {
+          Navigator.pushNamed(context, OrderScreen.routeName);
+        },
+      ),
     );
   }
 }

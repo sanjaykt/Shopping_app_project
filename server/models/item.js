@@ -20,8 +20,12 @@ Item.init({
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    price: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
     total: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     createdByUserId: {

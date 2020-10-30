@@ -6,8 +6,11 @@ import 'package:shopping/providers/auth_provider.dart';
 class CartProvider extends ChangeNotifier {
   AuthProvider _authProvider;
   List<Item> _itemList = [];
+  int _itemCount = 0;
 
   List<Item> get itemList => _itemList;
+
+  int get itemCount => _itemCount;
 
   update(AuthProvider authProvider) {
     this._authProvider = authProvider;
@@ -22,13 +25,17 @@ class CartProvider extends ChangeNotifier {
       int index = _itemList
           .indexWhere((element) => element.productId == item.productId);
       if (index == -1) {
+        item.total = item.price;
         _itemList.add(item);
       } else {
+        item.total += item.price;
         _itemList[index].quantity += 1;
       }
     } else {
+      item.total = item.price;
       _itemList.add(item);
     }
+    _itemCount += 1;
 
     notifyListeners();
   }

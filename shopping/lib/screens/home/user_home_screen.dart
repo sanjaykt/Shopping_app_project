@@ -1,12 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/common/constants.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/auth_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
 import 'package:shopping/screens/product/user_product_details_screen.dart';
 import 'package:shopping/widgets/drawer.dart';
+import 'package:shopping/widgets/image_sized_box.dart';
 
 class UserHomeScreen extends StatefulWidget {
   static final routeName = 'user_home_screen';
@@ -31,9 +30,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           children: [
             _buildHeading('Furniture'),
             _buildProductGrid(),
-            Divider(
-              color: Colors.red,
-            ),
+            Divider(color: Colors.red),
             _buildHeading('Clothing')
           ],
         ));
@@ -51,6 +48,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
   Widget _buildProductGrid() {
     return Container(
+      color: Colors.grey.shade200,
       constraints: BoxConstraints(maxHeight: 400),
       child: FutureBuilder(
         future: _productProvider.getAllProducts(),
@@ -69,7 +67,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (BuildContext context) =>
-                              UserProductDetailsScreen(productId: products[index].id),
+                              UserProductDetailsScreen(
+                                  productId: products[index].id),
                         ),
                       );
                     },
@@ -82,7 +81,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                             // mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              _buildImageSizedBox(products[index]),
+                              ImageSizedBox(products[index]),
                               Text(products[index].productName),
                               Text(products[index].productDetails),
                             ],
@@ -107,21 +106,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           return Center(child: CircularProgressIndicator());
         },
       ),
-    );
-  }
-
-  Widget _buildImageSizedBox(Product product) {
-    return SizedBox(
-      height: 100,
-      width: 100,
-      child: product.imageUrl != null
-          ? CachedNetworkImage(
-              imageUrl: Constants.SERVER + product.imageUrl,
-              placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            )
-          : Container(child: Text('no image')),
     );
   }
 }

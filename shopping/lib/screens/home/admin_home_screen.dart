@@ -1,9 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/common/constants.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/product_provider.dart';
+import 'package:shopping/widgets/image_sized_box.dart';
 import '../../widgets/drawer.dart';
 
 class AdminHomeScreen extends StatefulWidget {
@@ -96,7 +95,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                     height: 100,
                     child: Card(
                       child: ListTile(
-                        leading: _buildImageSizedBox(products[index]),
+                        leading: ImageSizedBox(products[index]),
                         title: Text(products[index].productName),
                         subtitle: Text(products[index].productDetails),
                       ),
@@ -112,21 +111,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           }
         },
       ),
-    );
-  }
-
-  Widget _buildImageSizedBox(Product product) {
-    return SizedBox(
-      height: 100,
-      width: 100,
-      child: product.imageUrl != null
-          ? CachedNetworkImage(
-              imageUrl: Constants.SERVER + product.imageUrl,
-              placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            )
-          : Container(child: Text('no image')),
     );
   }
 }

@@ -26,7 +26,7 @@ class Product {
         productBrand = json['productBrand'],
         productBarcode = json['productBarcode'],
         imageUrl = json['imageUrl'],
-        price = (json['price'] != null ? (json['price']).toDouble() : null),
+        price = json['price'] != null ? json['price'].toDouble() : null,
         createdByUserId = json['createdByUserId'],
         modifiedByUserId = json['modifiedByUserId'],
         createdDate = (json['createdDate'] != null

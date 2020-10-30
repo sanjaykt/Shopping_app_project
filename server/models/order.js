@@ -25,7 +25,7 @@ Order.init({
         allowNull: true
     },
     total: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: true
     },
     createdByUserId: {

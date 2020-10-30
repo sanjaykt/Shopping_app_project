@@ -54,7 +54,7 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
                   }),
               SizedBox(width: 5),
               if (_cartProvider.itemList.isNotEmpty)
-                Text(_cartProvider.itemList.length.toString()),
+                Text(_cartProvider.itemCount.toString()),
             ],
           ),
         ),
@@ -97,6 +97,7 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
                     Item item = Item();
                     item.productId = _product.id;
                     item.quantity = 1;
+                    item.price = _product.price;
                     _cartProvider.addItem(item);
                   }),
             )

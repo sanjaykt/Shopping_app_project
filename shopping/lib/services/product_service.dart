@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/models/server_response.dart';
+import '../common/constants.dart';
+import '../models/product.dart';
+import '../models/server_response.dart';
 import 'package:multipart_request/multipart_request.dart';
 
 class ProductService {

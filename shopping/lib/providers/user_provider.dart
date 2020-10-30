@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shopping/models/user.dart';
-import 'package:shopping/services/user_service.dart';
+import '../models/user.dart';
+import '../services/user_service.dart';
 
 class UserProvider extends ChangeNotifier {
   UserService _userService = UserService();

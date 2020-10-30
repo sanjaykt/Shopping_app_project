@@ -1,8 +1,8 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:shopping/models/item.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/providers/auth_provider.dart';
+import '../models/item.dart';
+import '../models/product.dart';
+import '../providers/auth_provider.dart';
 
 class CartProvider extends ChangeNotifier {
   AuthProvider _authProvider;

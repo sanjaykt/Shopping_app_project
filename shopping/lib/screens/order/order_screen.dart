@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/providers/cart_provider.dart';
-import 'package:shopping/providers/product_provider.dart';
-import 'package:shopping/widgets/image_sized_box.dart';
+import '../../models/product.dart';
+import '../../providers/cart_provider.dart';
+import '../../providers/product_provider.dart';
+import '../../widgets/image_sized_box.dart';
 
 import '../../main.dart';
 

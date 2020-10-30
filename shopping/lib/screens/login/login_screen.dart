@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/server_response.dart';
-import 'package:shopping/providers/auth_provider.dart';
-import 'package:shopping/screens/home/admin_home_screen.dart';
-import 'package:shopping/screens/home/user_home_screen.dart';
-import 'package:shopping/screens/user/user_details.dart';
+import '../../common/constants.dart';
+import '../../models/server_response.dart';
+import '../../providers/auth_provider.dart';
+import '../../screens/home/admin_home_screen.dart';
+import '../../screens/home/user_home_screen.dart';
+import '../../screens/user/user_details.dart';
 
 class LoginScreen extends StatefulWidget {
   static final routeName = '/';

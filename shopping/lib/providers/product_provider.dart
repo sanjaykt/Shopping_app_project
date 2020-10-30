@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/models/server_response.dart';
-import 'package:shopping/providers/Database_provider.dart';
-import 'package:shopping/providers/auth_provider.dart';
-import 'package:shopping/services/product_service.dart';
+
+import '../models/product.dart';
+import '../models/server_response.dart';
+import '../providers/Database_provider.dart';
+import '../providers/auth_provider.dart';
+import '../services/product_service.dart';
 
 class ProductProvider extends ChangeNotifier {
   DatabaseProvider _databaseProvider;

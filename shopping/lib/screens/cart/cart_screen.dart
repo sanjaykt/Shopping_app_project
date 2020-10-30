@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/main.dart';
+import 'package:shopping/common/my_colors.dart';
 import 'package:shopping/models/product.dart';
 import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
@@ -67,8 +67,9 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(height: 10),
                   Container(
                     alignment: Alignment.topRight,
-                    child: Padding(
+                    child: Container(
                       padding: const EdgeInsets.only(right: 20),
+                      height: 35,
                       child: RaisedButton(
                         color: MyColors.accentColorLight,
                         child: Text('Delete', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/server_response.dart';
-import 'package:shopping/models/user.dart';
-import 'package:shopping/services/auth_service.dart';
+
+import '../models/server_response.dart';
+import '../models/user.dart';
+import '../services/auth_service.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthService _authService = AuthService();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/providers/cart_provider.dart';
-import 'package:shopping/screens/cart/cart_screen.dart';
+
+import '../providers/cart_provider.dart';
+import '../screens/cart/cart_screen.dart';
 
 
 class WidgetRepo {

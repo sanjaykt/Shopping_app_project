@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/providers/auth_provider.dart';
-import 'package:shopping/screens/home/admin_home_screen.dart';
-import 'package:shopping/screens/home/user_home_screen.dart';
-import 'package:shopping/screens/login/login_screen.dart';
-import 'package:shopping/screens/product/product_list.dart';
+
+import '../providers/auth_provider.dart';
+import '../screens/home/admin_home_screen.dart';
+import '../screens/home/user_home_screen.dart';
+import '../screens/login/login_screen.dart';
+import '../screens/product/product_list.dart';
 
 AuthProvider _authProvider;
 

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/providers/auth_provider.dart';
-import 'package:shopping/providers/cart_provider.dart';
-import 'package:shopping/providers/product_provider.dart';
-import 'package:shopping/screens/product/user_product_details_screen.dart';
-import 'package:shopping/widgets/drawer.dart';
-import 'package:shopping/widgets/image_sized_box.dart';
-import 'package:shopping/widgets/widget_repo.dart';
+
+import '../../models/product.dart';
+import '../../providers/auth_provider.dart';
+import '../../providers/cart_provider.dart';
+import '../../providers/product_provider.dart';
+import '../../screens/product/user_product_details_screen.dart';
+import '../../widgets/drawer.dart';
+import '../../widgets/image_sized_box.dart';
+import '../../widgets/widget_repo.dart';
 
 class UserHomeScreen extends StatefulWidget {
   static final routeName = 'user_home_screen';

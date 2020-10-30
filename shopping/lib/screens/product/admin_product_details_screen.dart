@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/models/server_response.dart';
-import 'package:shopping/providers/product_provider.dart';
+import '../../common/constants.dart';
+import '../../models/product.dart';
+import '../../models/server_response.dart';
+import '../../providers/product_provider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   static final routeName = 'product_details_screen';

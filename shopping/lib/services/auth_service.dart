@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/server_response.dart';
-import 'package:shopping/models/user.dart';
+import '../common/constants.dart';
+import '../models/server_response.dart';
+import '../models/user.dart';
 
 class AuthService {
   static const String PATH = "/user";

@@ -1,14 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/item.dart';
-import 'package:shopping/models/product.dart';
-import 'package:shopping/providers/cart_provider.dart';
-import 'package:shopping/providers/product_provider.dart';
-import 'package:shopping/screens/cart/cart_screen.dart';
-import 'package:shopping/widgets/widget_repo.dart';
-import 'package:shopping/widgets/drawer.dart';
+
+import '../../common/constants.dart';
+import '../../models/product.dart';
+import '../../providers/cart_provider.dart';
+import '../../providers/product_provider.dart';
+import '../../widgets/widget_repo.dart';
+import '../../widgets/drawer.dart';
 
 class UserProductDetailsScreen extends StatefulWidget {
   static final routeName = 'user_product_details_screen';

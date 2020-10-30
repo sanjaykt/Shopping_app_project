@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping/common/constants.dart';
-import 'package:shopping/models/product.dart';
+
+import '../common/constants.dart';
+import '../models/product.dart';
 
 class ImageSizedBox extends StatelessWidget {
   final Product product;

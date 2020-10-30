@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:shopping/providers/cart_provider.dart';
-import 'package:shopping/screens/cart/cart_screen.dart';
-import 'package:shopping/screens/order/order_screen.dart';
-import 'package:shopping/screens/product/user_product_details_screen.dart';
 
-import 'common/constants.dart';
+import 'providers/cart_provider.dart';
+import 'screens/cart/cart_screen.dart';
+import 'screens/order/order_screen.dart';
+import 'screens/product/user_product_details_screen.dart';
+import 'common/my_colors.dart';
 import 'providers/Database_provider.dart';
 import 'providers/auth_provider.dart';
 import 'screens/home/admin_home_screen.dart';
@@ -21,15 +19,6 @@ import 'providers/product_provider.dart';
 
 void main() {
   runApp(MyApp());
-}
-
-class MyColors {
-  static final Color primaryColor = Color(0xFF6d4c41);
-  static final Color primaryColorLight = Color(0xFF6d4c41);
-  static final Color primaryColorDark = Color(0xFF9c786c);
-  static final Color accentColor = Color(0xFFff9e80);
-  static final Color accentColorLight = Color(0xFFffd0b0);
-  static final Color accentColorDark = Color(0xFFc96f53);
 }
 
 class MyApp extends StatelessWidget {

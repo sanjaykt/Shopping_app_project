@@ -38,6 +38,10 @@ User.init({
         type: DataTypes.INTEGER,
         allowNull: true,
     },
+    addressId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
     role: {
         type: DataTypes.STRING,
         allowNull: true,

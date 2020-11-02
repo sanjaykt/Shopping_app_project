@@ -43,6 +43,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
   Widget _buildHeading(String name) {
     return Container(
+      padding: EdgeInsets.all(10),
       child: Text(
         name,
         textAlign: TextAlign.center,
@@ -53,7 +54,8 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
 
   Widget _buildProductGrid() {
     return Container(
-      color: Colors.grey.shade200,
+      padding: EdgeInsets.fromLTRB(5, 8, 5, 0),
+      color: Colors.grey.shade300,
       constraints: BoxConstraints(maxHeight: 400),
       child: FutureBuilder(
         future: _productProvider.getAllProducts(),

@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/providers/auth_provider.dart';
+import 'package:shopping/screens/user/shipping_address_screen.dart';
+import 'package:shopping/widgets/drawer.dart';
+
 import '../../models/product.dart';
 import '../../providers/cart_provider.dart';
 import '../../providers/product_provider.dart';
 import '../../widgets/image_sized_box.dart';
-
-import '../../main.dart';
 
 class OrderScreen extends StatefulWidget {
   static final routeName = 'order_screen';
@@ -18,13 +20,17 @@ class OrderScreen extends StatefulWidget {
 class _OrderScreenState extends State<OrderScreen> {
   CartProvider _cartProvider;
   ProductProvider _productProvider;
+  AuthProvider _authProvider;
 
   @override
   Widget build(BuildContext context) {
     _cartProvider = Provider.of<CartProvider>(context);
     _productProvider = Provider.of<ProductProvider>(context);
+    _authProvider = Provider.of<AuthProvider>(context);
+
     return Scaffold(
       appBar: AppBar(title: Text('Order')),
+      drawer: _authProvider.loggedInUser != null ? AppDrawer() : null,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -106,8 +112,10 @@ class _OrderScreenState extends State<OrderScreen> {
     return Container(
       width: double.infinity,
       child: RaisedButton(
-        child: Text('Add Address'),
-        onPressed: () {},
+        child: Text('Add Shipping Address'),
+        onPressed: () {
+          Navigator.pushNamed(context, ShippingAddressScreen.routeName);
+        },
       ),
     );
   }

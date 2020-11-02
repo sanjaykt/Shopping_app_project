@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping/common/my_colors.dart';
 import 'package:shopping/models/product.dart';
+import 'package:shopping/providers/auth_provider.dart';
 import 'package:shopping/providers/cart_provider.dart';
 import 'package:shopping/providers/product_provider.dart';
 import 'package:shopping/screens/order/order_screen.dart';
@@ -18,16 +19,16 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   CartProvider _cartProvider;
   ProductProvider _productProvider;
+  AuthProvider _authProvider;
 
   @override
   Widget build(BuildContext context) {
     _cartProvider = Provider.of<CartProvider>(context);
     _productProvider = Provider.of<ProductProvider>(context);
+    _authProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cart'),
-      ),
-      drawer: AppDrawer(),
+      appBar: AppBar(title: Text('Cart')),
+      drawer: _authProvider.loggedInUser != null ? AppDrawer() : null,
       body: Container(
         padding: EdgeInsets.all(12),
         child: ListView(
@@ -72,7 +73,11 @@ class _CartScreenState extends State<CartScreen> {
                       height: 35,
                       child: RaisedButton(
                         color: MyColors.accentColorLight,
-                        child: Text('Delete', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),),
+                        child: Text(
+                          'Delete',
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w300),
+                        ),
                         onPressed: () {
                           _cartProvider.deleteItem(i);
                         },

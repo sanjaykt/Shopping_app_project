@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/screens/user/shipping_address_screen.dart';
 
-import 'providers/cart_provider.dart';
-import 'screens/cart/cart_screen.dart';
-import 'screens/order/order_screen.dart';
-import 'screens/product/user_product_details_screen.dart';
 import 'common/my_colors.dart';
 import 'providers/Database_provider.dart';
 import 'providers/auth_provider.dart';
+import 'providers/cart_provider.dart';
+import 'providers/product_provider.dart';
+import 'providers/user_provider.dart';
+import 'screens/cart/cart_screen.dart';
 import 'screens/home/admin_home_screen.dart';
 import 'screens/home/user_home_screen.dart';
 import 'screens/login/login_screen.dart';
+import 'screens/order/order_screen.dart';
 import 'screens/product/admin_product_details_screen.dart';
 import 'screens/product/product_list.dart';
+import 'screens/product/user_product_details_screen.dart';
 import 'screens/user/user_details.dart';
-import 'providers/user_provider.dart';
-import 'providers/product_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -87,6 +88,8 @@ class MyApp extends StatelessWidget {
               UserProductDetailsScreen(),
           CartScreen.routeName: (BuildContext context) => CartScreen(),
           OrderScreen.routeName: (BuildContext context) => OrderScreen(),
+          ShippingAddressScreen.routeName: (BuildContext context) =>
+              ShippingAddressScreen(),
         },
       ),
     );

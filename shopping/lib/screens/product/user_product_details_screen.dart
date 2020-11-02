@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/providers/auth_provider.dart';
 
 import '../../common/constants.dart';
 import '../../models/product.dart';
 import '../../providers/cart_provider.dart';
 import '../../providers/product_provider.dart';
-import '../../widgets/widget_repo.dart';
 import '../../widgets/drawer.dart';
+import '../../widgets/widget_repo.dart';
 
 class UserProductDetailsScreen extends StatefulWidget {
   static final routeName = 'user_product_details_screen';
@@ -23,12 +24,14 @@ class UserProductDetailsScreen extends StatefulWidget {
 class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
   ProductProvider _productProvider;
   CartProvider _cartProvider;
+  AuthProvider _authProvider;
   Product _product;
 
   @override
   Widget build(BuildContext context) {
     _productProvider = Provider.of<ProductProvider>(context);
     _cartProvider = Provider.of<CartProvider>(context);
+    _authProvider = Provider.of<AuthProvider>(context);
 
     if (_product == null) {
       _product = Product();
@@ -39,8 +42,9 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
     }
 
     return Scaffold(
-      appBar: WidgetRepo.getCustomAppBar(context, _cartProvider, 'Product Details'),
-      drawer: AppDrawer(),
+      appBar:
+          WidgetRepo.getCustomAppBar(context, _cartProvider, 'Product Details'),
+      drawer: _authProvider.loggedInUser != null ? AppDrawer() : null,
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: ListView(
@@ -75,7 +79,6 @@ class _UserProductDetailsScreenState extends State<UserProductDetailsScreen> {
               child: RaisedButton(
                   child: Text('Add to Cart'),
                   onPressed: () {
-
                     _cartProvider.addItem(_product);
                   }),
             )

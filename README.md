@@ -1,6 +1,6 @@
 #Shopping App - Web & Mobile
 
-This project is being developed in Flutter cross platform
+This project is being developed in Flutter
 
 The web app will be developed in React.js
 

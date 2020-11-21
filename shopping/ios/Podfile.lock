@@ -1,9 +1,15 @@
 PODS:
+  - Alamofire (4.9.1)
   - Flutter (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - image_picker (0.0.1):
+    - Flutter
+  - multipart_request (0.0.1):
+    - Alamofire (= 4.9.1)
+    - Flutter
+  - path_provider (0.0.1):
     - Flutter
   - sqflite (0.0.1):
     - Flutter
@@ -12,10 +18,13 @@ PODS:
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - multipart_request (from `.symlinks/plugins/multipart_request/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - FMDB
 
 EXTERNAL SOURCES:
@@ -23,13 +32,20 @@ EXTERNAL SOURCES:
     :path: Flutter
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  multipart_request:
+    :path: ".symlinks/plugins/multipart_request/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
+  multipart_request: 1d959b9c5697a47347842aaf6b9cfd9a82ee9cf9
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
